@@ -1,4 +1,4 @@
-package com.salvoroni.unitTest.part2
+package com.salvoroni.unitTest.sort
 
 fun shellSort(arr: IntArray) {
     val n = arr.size

@@ -37,5 +37,5 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.salvoroni.unitTest.part1.AcosKt")
+    mainClass.set("com.salvoroni.unitTest.MainKt")
 }

@@ -1,6 +1,6 @@
 package com.salvoroni.unitTest.testOne
 
-import com.salvoroni.unitTest.part1._acos
+import com.salvoroni.unitTest.math._acos
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
 
