@@ -5,7 +5,6 @@ import com.salvoroni.unitTest.sort.shellSort
 import com.salvoroni.unitTest.models.*
 
 fun main() {
-    println(_acos(1.0))
     val arr = intArrayOf(23, 12, 1,8, 34, 54, 2, 3)
     for (i in arr) print("$i ")
 
@@ -13,6 +12,7 @@ fun main() {
     println()
 
     for (i in arr) print("$i ")
+    println()
 
     val arthur = Person("Артур", "Голова Артура", "левая рука Артура", "правая рука Артура", "левая нога Артура", "правая нога Артура")
     val unnamed = Person("Безымянный", "Голова Безымянного", "левая рука Безымянного", "правая рука Безымянного", "левая нога Безымянного", "правая нога Безымянного")
