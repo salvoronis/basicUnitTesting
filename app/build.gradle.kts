@@ -45,6 +45,7 @@ tasks.test {
     filter {
         includeTestsMatching("com.salvoroni.unitTest.testOne.*")
         includeTestsMatching("com.salvoroni.unitTest.testTwo.*")
+        includeTestsMatching("com.salvoroni.unitTest.modelTest.*")
     }
     testLogging {
         events("passed", "skipped", "failed", "standardOut", "standardError")
