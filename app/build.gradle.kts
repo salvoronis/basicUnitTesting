@@ -39,3 +39,14 @@ application {
     // Define the main class for the application.
     mainClass.set("com.salvoroni.unitTest.MainKt")
 }
+
+tasks.test {
+    useJUnitPlatform()
+    filter {
+        includeTestsMatching("com.salvoroni.unitTest.testOne.*")
+        includeTestsMatching("com.salvoroni.unitTest.testTwo.*")
+    }
+    testLogging {
+        events("passed", "skipped", "failed", "standardOut", "standardError")
+    }
+}

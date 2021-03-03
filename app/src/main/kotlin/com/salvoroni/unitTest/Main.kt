@@ -5,7 +5,7 @@ import com.salvoroni.unitTest.sort.shellSort
 import com.salvoroni.unitTest.models.*
 
 fun main() {
-    println(_acos(-0.5))
+    println(_acos(1.0))
     val arr = intArrayOf(23, 12, 1,8, 34, 54, 2, 3)
     for (i in arr) print("$i ")
 
