@@ -19,44 +19,63 @@ class ModelTest {
         assertTrue(room.persons.contains(person))
     }
 
-    @Test fun domainTestMain() {
-        System.setOut(newOut)
+    val arthur = Person("Артур", "Голова Артура", "левая рука Артура", "правая рука Артура", "левая нога Артура", "правая нога Артура")
+    val unnamed = Person("Безымянный", "Голова Безымянного", "левая рука Безымянного", "правая рука Безымянного", "левая нога Безымянного", "правая нога Безымянного")
+    val room = Room()
+    val chair: Chair = Chair()
+    val remote: RemoteControl = RemoteControl()
 
-        val arthur = Person("Артур", "Голова Артура", "левая рука Артура", "правая рука Артура", "левая нога Артура", "правая нога Артура")
-        val unnamed = Person("Безымянный", "Голова Безымянного", "левая рука Безымянного", "правая рука Безымянного", "левая нога Безымянного", "правая нога Безымянного")
-        val room = Room()
-        room.enter(unnamed)
-        arthur.getNervous()
-        room.enter(arthur)
-        arthur.shock()
-        arthur.mainHead.see()
-        val chair: Chair = Chair()
-        chair.sit(unnamed)
-        val remote: RemoteControl = RemoteControl()
-        remote.lieDown(unnamed)
+    @Test fun domainTestMain() = assertAll({
         unnamed.secondHead = Head("Вторая голова Безымянного(правая)")
-        unnamed.secondHead?.jaw?.chew(unnamed.leftArm, unnamed.mainHead)
-        unnamed.secondHead?.busy()
-        unnamed.mainHead.smile()
-        arthur.shock()
-        arthur.mainHead.jaw.sag()
 
+        System.setOut(newOut)
+        room.enter(unnamed)
         val output: String = String(baos.toByteArray())
-        assertTrue(output.contains(
-            "Безымянный вошел в комната\n" +
-            "Артур нервничает\n"+
-            "Артур вошел в комната\n"+
-            "Артур не верил своим глазам\n"+
-            "видеть\n"+
-            "Безымянный развалился в кресло\n"+
-            "Безымянный положил ноги на пульт управления\n"+
-            "Челюсть Вторая голова Безымянного(правая) в Голова Безымянного ковыряется с помощью левая рука Безымянного\n"+
-            "Вторая голова Безымянного(правая) занята\n"+
-            "Голова Безымянного улыбается\n"+
-            "Артур не верил своим глазам\n"+
-            "Челюсть Голова Артура отвисла"
-        ))
-
+        assertTrue(output.contains("Безымянный вошел в комната"))
+    },{
+        arthur.getNervous()
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("Артур нервничает"))
+    },{
+        room.enter(arthur)
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("Артур вошел в комната"))
+    },{
+        arthur.shock()
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("Артур не верил своим глазам"))
+    },{
+        arthur.mainHead.see()
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("видеть"))
+    },{
+        chair.sit(unnamed)
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("Безымянный развалился в кресло"))
+    },{
+        remote.lieDown(unnamed)
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("Безымянный положил ноги на пульт управления"))
+    },{
+        unnamed.secondHead?.jaw?.chew(unnamed.leftArm, unnamed.mainHead)
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("Челюсть Вторая голова Безымянного(правая) в Голова Безымянного ковыряется с помощью левая рука Безымянного"))
+    },{
+        unnamed.secondHead?.busy()
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("Вторая голова Безымянного(правая) занята"))
+    },{
+        unnamed.mainHead.smile()
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("Голова Безымянного улыбается"))
+    },{
+        arthur.shock()
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("Артур не верил своим глазам"))
+    },{
+        arthur.mainHead.jaw.sag()
+        val output: String = String(baos.toByteArray())
+        assertTrue(output.contains("Челюсть Голова Артура отвисла"))
         System.setOut(oldOut)
-    }
+    })
 }
