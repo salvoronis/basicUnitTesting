@@ -18,9 +18,21 @@ class AcosTest {
         {assertEquals(2.0943951, _acos(-0.5), 0.2)}
     )
 
-    @Test fun borderTest() = assertAll(
-        {assertEquals(0.0,_acos(1.0), 0.2)},
-        {assertEquals(3.14159265, _acos(-1.0), 0.2)}
+    @Disabled @Test fun borderTest() = assertAll(
+        {assertEquals(0.0,_acos(1.0), 0.001)},
+        {assertEquals(0.063, _acos(0.998), 0.001)},
+        {assertEquals(3.14159265, _acos(-1.0), 0.001)},
+        {assertEquals(3.078, _acos(-0.998), 0.001)}
+    )
+
+    @Test fun randomCenterNearDots() = assertAll(
+        {assertEquals(2.004, _acos(-0.42), 0.2)},
+        {assertEquals(1.203, _acos(0.36), 0.2)}
+    )
+
+    @Disabled @Test fun randomDots() = assertAll(
+        {assertEquals(0.541, _acos(0.857),0.2)},
+        {assertEquals(2.498, _acos(-0.8), 0.2)}
     )
 
     @Test fun rangeTest() = assertAll(

@@ -14,6 +14,24 @@ fun main() {
     for (i in arr) print("$i ")
     println()
 
+    val arr1 = intArrayOf(23, 23, 1,8, 34, 54, 2, 3)
+    for (i in arr1) print("$i ")
+
+    shellSort(arr1)
+    println()
+
+    for (i in arr1) print("$i ")
+    println()
+
+    val arr2 = intArrayOf(-23, 23, 1,8, 34, 54, 2, 3)
+    for (i in arr2) print("$i ")
+
+    shellSort(arr2)
+    println()
+
+    for (i in arr2) print("$i ")
+    println()
+
     val arthur = Person("Артур", "Голова Артура", "левая рука Артура", "правая рука Артура", "левая нога Артура", "правая нога Артура")
     val unnamed = Person("Безымянный", "Голова Безымянного", "левая рука Безымянного", "правая рука Безымянного", "левая нога Безымянного", "правая нога Безымянного")
     val room = Room()
