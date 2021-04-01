@@ -25,19 +25,38 @@ class ShellSortTest {
         },
     )
 
-    @Test fun duplicateArray() {
-        val testArr: IntArray = intArrayOf(23,23, 123,245,1,52,6)
-        val expect: IntArray = intArrayOf(1,6,23,23,52,123,245)
-        shellSort(testArr)
-        Assert.assertArrayEquals(testArr, expect)
-    }
+    @Test fun duplicateArray() = assertAll (
+        {
+            val testArr: IntArray = intArrayOf(23,23, 123,245,1,52,6)
+            val expect: IntArray = intArrayOf(1,6,23,23,52,123,245)
+            shellSort(testArr)
+            Assert.assertArrayEquals(testArr, expect)
+        },{
+            val testArr: IntArray = intArrayOf(23,23, 123,123,1,52,6)
+            val expect: IntArray = intArrayOf(1,6,23,23,52,123,123)
+            shellSort(testArr)
+            Assert.assertArrayEquals(testArr, expect)
+        },{
+            val testArr: IntArray = intArrayOf(1,1, 123,245,1,52,6)
+            val expect: IntArray = intArrayOf(1,1,1,6,52,123,245)
+            shellSort(testArr)
+            Assert.assertArrayEquals(testArr, expect)
+        }
+    )
 
-    @Test fun minusArr() {
-        val testArr: IntArray = intArrayOf(-23,23,-1, 1,3,5)
-        val expect: IntArray = intArrayOf(-23,-1,1,3,5,23)
-        shellSort(testArr)
-        Assert.assertArrayEquals(testArr, expect)
-    }
+    @Test fun minusArr() = assertAll(
+        {
+            val testArr: IntArray = intArrayOf(-23,23,-1, 1,3,5)
+            val expect: IntArray = intArrayOf(-23,-1,1,3,5,23)
+            shellSort(testArr)
+            Assert.assertArrayEquals(testArr, expect)
+        },{
+            val testArr: IntArray = intArrayOf(-23,-1, 1,3,5,-23)
+            val expect: IntArray = intArrayOf(-23,-23,-1,1,3,5)
+            shellSort(testArr)
+            Assert.assertArrayEquals(testArr, expect)
+        }
+    )
 
     val midTestArr: IntArray = intArrayOf(23, 12, 1, 8, 34, 54, 2, 3)
 
